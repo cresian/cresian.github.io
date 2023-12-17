@@ -72,20 +72,19 @@
     <script>
         document.getElementById('registrationForm').addEventListener('submit', function (event) {
             event.preventDefault(); // prevent form submission
-
-            var username = document.getElementById('username').value;
+    
             var password = document.getElementById('password').value;
             var confirmPassword = document.getElementById('confirmPassword').value;
-
+    
+            var validationMessage = document.getElementById('validationMessage');
+            var successMessage = document.getElementById('successMessage');
+    
             if (password !== confirmPassword) {
-                alert('Passwords do not match.');
+                validationMessage.textContent = 'Passwords do not match.';
+                successMessage.textContent = '';
             } else {
-                // Save username and password to localStorage
-                localStorage.setItem('username', username);
-                localStorage.setItem('password', password);
-
-                alert('Successfully created! You will be redirected to the login page.');
-                window.location.href = 'index.html'; // replace with your login page URL
+                validationMessage.textContent = '';
+                successMessage.textContent = 'Successfully registered.';
             }
         });
     </script>
