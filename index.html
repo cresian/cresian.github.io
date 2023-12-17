@@ -12,6 +12,8 @@
     <body>
         <section class="container">
             <header>Login Form</header>
+            <p id="validationMessage" style="color: red; text-align: center;"></p>
+            <p id="successMessage" style="color: green; text-align: center;"></p>
             <form action="#" class="form" id="loginForm">
                 <div class="input-box">
                     <label>Username</label>
@@ -34,6 +36,9 @@
             </form>
         </section>
 
+        <!-- Add these elements somewhere in your HTML to display the messages -->
+
+
         <script>
             document.getElementById('loginForm').addEventListener('submit', function (event) {
                 event.preventDefault(); // prevent form submission
@@ -42,14 +47,21 @@
                 var password = document.getElementById('password').value;
 
                 // Hardcoded username and password
-                var storedUsername = "user";
-                var storedPassword = "adminadminadminadminadminadminadminadminadminadmin";
+                var storedUsername = "cresian";
+                var storedPassword = "merrychristmassirmerrychristmassir";
+
+                var validationMessage = document.getElementById('validationMessage');
+                var successMessage = document.getElementById('successMessage');
 
                 if (username === storedUsername && password === storedPassword) {
-                    alert('Login successfully !!!');
+                    validationMessage.textContent = '';
+                    successMessage.textContent = 'Login successful!';
                     window.location.href = 'home.html'; // replace with your home page URL
                 } else {
-                    alert('Invalid username or password.');
+                    username = '';
+                    password = '';
+                    validationMessage.textContent = 'Invalid username or password. Please try again.';
+                    successMessage.textContent = '';
                 }
             });
         </script>
